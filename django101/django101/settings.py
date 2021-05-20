@@ -26,7 +26,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    # get from OS environment
 ]
+
+# No need to do this
+# APPEND_SLASH=False
 
 # Application definition
 

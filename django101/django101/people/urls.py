@@ -1,0 +1,3 @@
+# people.urls
+
+urlpatterns = []

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phones list</title>
+</head>
+<body>
+<h1>{{ message }}</h1>
+<ul>
+    {% for phone in phones %}
+        <li class="list-item">
+            <h1>{{ phone.name }}</h1>
+            {% if phone.quantity %}
+                <a href="..../{PHONE_ID}" class="btn cta-buy">
+                    Buy
+                </a>
+            {% else %}
+                <a style="pointer-events: none" href="..../{PHONE_ID}" class="btn cta-buy">
+                    Buy
+                </a>
+            {% endif %}
+        </li>
+    {% empty %}
+        No phones
+    {% endfor %}
+</ul>
+</body>
+</html>
