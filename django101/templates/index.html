@@ -7,8 +7,27 @@
 <body>
 <h1>It works!</h1>
 <h2>My name is {{ name }}</h2>
-{% for person in people %}
-    {{ person.name }}, {{ person.age }}
-{% endfor %}
+
+<!--
+This template is shown at /cities/
+
+<form method="post">
+<form method="post" action="/cities/">
+
+-->
+
+<form method="post" action="{% url 'create person' %}">
+    <input name="name"/>
+    <input name="age"/>
+    {% csrf_token %}
+    <button>Create</button>
+</form>
+<ul>
+    {% for person in people %}
+        <li>
+            {{ person.name }}, {{ person.age }}
+        </li>
+    {% endfor %}
+</ul>
 </body>
 </html>
