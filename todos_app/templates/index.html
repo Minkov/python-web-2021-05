@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+
+    <style>
+        h1 {
+            margin: 5px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        div.done {
+            color: green;
+            font-weight: bold;
+        }
+
+        div.open {
+            color: red;
+            font-weight: bold;
+        }
+
+        div.todo {
+            display: block;
+            background: white;
+            border: 2px solid white;
+            border-radius: 10px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        div.todo p {
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        div.todo div.description {
+            padding: 10px;
+        }
+
+        div.container {
+            background: greenyellow;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<h1>My Todo List</h1>
+<form method="post" action="/todos-add/">
+    {% csrf_token %}
+    <label>
+        Text
+        <input type="text" name="text" class="form-control"/>
+    </label>
+    <label>
+        Description:
+        <textarea name="description"></textarea>
+    </label>
+    <label>
+        Owner:
+        <input type="text" name="owner"/>
+    </label>
+
+    <button class="btn btn-success">Create</button>
+</form>
+{% if todos %}
+    <div class="container">
+        {% for todo in todos %}
+            <div class="todo">
+                {{ todo.id }}
+                <p>{{ todo.name }}</p>
+                <div class="description">
+                    {{ todo.description }}
+                </div>
+                <form method="post" action="/todo-change-state/{{ todo.id }}">
+                    {% csrf_token %}
+                    {% if todo.state %}
+                        <div class="done">DONE</div>
+                        <input type="hidden" name="state" value="false"/>
+                        <button class="btn btn-danger">Change</button>
+                    {% else %}
+                        <div class="open">NOT DONE</div>
+                        <input type="hidden" name="state" value="true"/>
+                        <button class="btn btn-primary">Change</button>
+                    {% endif %}
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <h2>No TODOs</h2>
+{% endif %}
+</body>
+</html>
