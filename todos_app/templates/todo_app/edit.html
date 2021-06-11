@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit TODO</title>
+</head>
+<body>
+<h1>Fill out the form!</h1>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ todos.as_p }}
+        <input type="submit" class="btn btn-primary" value='Submit'>
+        <a class="btn" href="{% url 'index' %}">Return</a>
+    </form>
+</div>
+</body>
+</html>

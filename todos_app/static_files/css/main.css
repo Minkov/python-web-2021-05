@@ -1,0 +1,47 @@
+h1 {
+    margin: 5px;
+    text-align: center;
+    padding: 5px;
+}
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+div.done {
+    color: green;
+    font-weight: bold;
+}
+
+div.open {
+    color: red;
+    font-weight: bold;
+}
+
+div.todo {
+    display: block;
+    background: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 5px;
+    text-align: center;
+}
+
+div.todo p {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+div.todo div.description {
+    padding: 10px;
+}
+
+div.container {
+    background: greenyellow;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 10px;
+}
