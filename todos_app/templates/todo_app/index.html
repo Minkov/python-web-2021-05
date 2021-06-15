@@ -14,7 +14,8 @@
             <div class="todo">
                 <p>{{ todo.title }}</p>
                 <div class="description">{{ todo.description }}</div>
-                <a class="btn btn-primary" href='update/{{ todo.id }}'>Update</a>
+                {#                <a class="btn btn-primary" href='update/{{ todo.id }}'>Update</a>#}
+                <a class="btn btn-primary" href='{% url 'update_todo' todo.id %}'>Update</a>
                 <a class="btn btn-primary" href='delete/{{ todo.id }}'>Delete</a>
             </div>
         {% endfor %}

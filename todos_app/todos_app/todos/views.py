@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from todos_app.todos.forms import CreateTodoForm, UpdateTodoForm
+from todos_app.todos.forms import CreateTodoForm, UpdateTodoForm, TodoForm
 
 #
 # def index(request):
@@ -52,16 +52,11 @@ def index(request):
 
 
 def create_todo(request):
-    form = CreateTodoForm(request.POST)
+    form = TodoForm(request.POST)
 
     if request.method == 'POST':
         if form.is_valid():
-            todo = Todo(
-                title=form.cleaned_data['title'],
-                description=form.cleaned_data['description'],
-                state=False,
-            )
-            todo.save()
+            form.save()
             return redirect('index')
 
     context = {
@@ -69,22 +64,26 @@ def create_todo(request):
     }
 
     return render(request, 'todo_app/create.html', context)
+
+
+def show_form(request, form):
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'todo_app/edit.html', context)
 
 
 def update_todo(request, pk):
     todo = Todo.objects.get(pk=pk)
-    form = UpdateTodoForm(request.POST, initial=todo)
 
-    if request.method == 'POST':
+    if request.method == 'GET':
+        return show_form(request, TodoForm(initial=todo.__dict__))
+    else:
+        form = TodoForm(request.POST, instance=todo)
+
         if form.is_valid():
-            todo.title = form.cleaned_data['title']
-            todo.description = form.cleaned_data['description']
-            todo.state = form.cleaned_data['state']
-            todo.save()
+            form.save()
             return redirect('index')
 
-    context = {
-        'form': form,
-    }
-
-    return render(request, 'todo_app/create.html', context)
+        return show_form(request, form)

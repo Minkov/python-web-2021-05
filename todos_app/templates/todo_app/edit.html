@@ -9,7 +9,7 @@
 <div class="container">
     <form method="post">
         {% csrf_token %}
-        {{ todos.as_p }}
+        {{ form.as_p }}
         <input type="submit" class="btn btn-primary" value='Submit'>
         <a class="btn" href="{% url 'index' %}">Return</a>
     </form>
