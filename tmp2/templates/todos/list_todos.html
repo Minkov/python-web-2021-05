@@ -1,0 +1,19 @@
+{% extends 'shared/base.html' %}
+
+{% load capitalize_filter %}
+{% load todos %}
+
+{% block styles %}
+
+{% endblock %}
+{% block content %}
+    {% todos_count %}
+    <ul>
+        {% for todo in todos %}
+            {#            <li>{{ todo.text|capfirst|lower }}</li>#}
+            {#          lower(capfirst(todo.text))  #}
+            <li>{{ todo.text|capitalize:2 }}</li>
+            {#          capfirst(lower(todo.text))  #}
+        {% endfor %}
+    </ul>
+{% endblock %}
