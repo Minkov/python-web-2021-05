@@ -1,7 +1,9 @@
 {% extends 'common/base.html' %}
 {% block content %}
     <h1 class="text-center">Create Python</h1>
-    <form class="col-lg-6 offset-lg-3" method="post">
+    <form class="col-lg-6 offset-lg-3"
+          method="post"
+          enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
             <label for="name">Name</label>
@@ -11,10 +13,9 @@
             <label for="description">Description</label>
             {{ form.description }}
         </div>
-        <div class="form-group">
-            <label for="image">Image URL</label>
-            {{ form.image }}
-        </div>
+        {{ form.errors }}
+        {{ form.image }}
+
         <input type="submit" value="Create" class="btn btn-primary">
     </form>
 {% endblock %}

@@ -1,0 +1,27 @@
+.list {
+    list-style-type: none;
+}
+
+.list > * {
+    padding: 0;
+    margin: 15px 0 0;
+    color: purple;
+}
+
+.list img {
+    height: 50px;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+body {
+    font-size: 14px;
+}
+
+a {
+    /*font-size: 18px;*/
+    font-size: 1.285714285714286em;
+}
