@@ -7,18 +7,6 @@ from .forms import PythonCreateForm
 from .models import Python
 from ..core.decorators import any_group_required
 
-
-def sign_in(request):
-    user = authenticate(username='pesho', password='12345qwe')
-    login(request, user)
-    return redirect('index')
-
-
-def sign_out(request):
-    logout(request)
-    return redirect('index')
-
-
 def index(request):
     pythons = Python.objects.all()
     return render(request, 'index.html', {'pythons': pythons})
