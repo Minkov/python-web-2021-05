@@ -1,0 +1,17 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+    <div class="source-list-section">
+        <div class="source-list-container container">
+            <h2>All Sources</h2>
+
+            {% for source in source_list %}
+                <div class="source-item-card">
+                    <h3>{{ source.name }}</h3>
+                    <a href="{% url 'details source' source.id %}">See related articles</a>
+                    <p>Link: <a href="{{ source.url }}" target="_blank">{{ source.name }}</a></p>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

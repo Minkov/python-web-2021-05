@@ -1,0 +1,37 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+    <div class="source-details-section">
+        <div class="source-details-container container">
+            <h2>Source: {{ source.name }}</h2>
+            <ol>
+                {% for article in page_obj.object_list %}
+                    <div class="article-card">
+                        <h3 class="article-title small">{{ article.id }} {{ article.title }}</h3>
+                        <img class="article-image large"
+                             src="{{ article.image_url }}">
+                        <p>{{ article.desciption }}</p>
+                        <span class="source">{{ source.name }}</span>
+                    </div>
+                {% endfor %}
+            </ol>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">prev</a>
+                    {% else %}
+                        <a href="/" style="pointer-events: none">Prev</a>
+                    {% endif %}
+                    <span class="current">
+                        {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    {% else %}
+                        <a href="" style="pointer-events: none">next</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

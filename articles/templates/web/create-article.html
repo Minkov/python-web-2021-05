@@ -1,0 +1,13 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+    <div class="article-create-section">
+        <div class="article-create-container container">
+            <h1>Create a new Article</h1>
+            <form method="post" action="{% url 'create article' %}">
+                {% csrf_token %}
+                {{ form }}
+                <input class="btn" type="submit" value="Create Article">
+            </form>
+        </div>
+    </div>
+{% endblock %}

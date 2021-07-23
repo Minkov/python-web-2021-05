@@ -1,0 +1,18 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+
+    <div class="home-page-section">
+        <div class="home-page-container container">
+            {% for article in article_list %}
+                <div class="article-card">
+                    <h1 class="article-title">{{ article.title }}</h1>
+                    <img class="article-image" src="{{ article.image_url }}">
+                    <p>{{ article.description }}</p>
+                    <span class="source">{{ article.source.name }}</span>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
