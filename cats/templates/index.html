@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Welcome to our site!</h1>
+<h2>{{ title }}</h2>
+<ul>
+    <li>
+        <a href="{% url 'index' %}">Go to index</a>
+    </li>
+    <li>
+        <a href="{% url 'cbv index' %}">Go to index (CBV)</a>
+    </li>
+    <li>
+        <a href="{% url 'show cats' %}">Go to cats</a>
+    </li>
+    <li>
+        <a href="{% url 'cbv show cats' %}">Go to cats (CBV)</a>
+    </li>
+    <li>
+        <a href="{% url 'create cat' %}">Go to create cat (CBV)</a>
+    </li>
+</ul>
+</body>
+</html>
