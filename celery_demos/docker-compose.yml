@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  redis:
+    image: redis
+    container_name: redis_celery_demos
+    ports:
+      - "6379:6379"
+    command: redis-server
